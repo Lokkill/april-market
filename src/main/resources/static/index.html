@@ -125,9 +125,19 @@
     <div ng-if="isUserLoggedIn()">
         <p></p>
         <h4>Оформление заказа</h4>
-        <button ng-click="createOrder()" class="btn btn-primary" ng-if="cartDto.items.length > 0">Оформить заказ</button>
+        <form>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Номер телефона</label>
+                <input type="text" class="form-control" ng-model="contact.phone" id="exampleFormControlInput1" name="phone" placeholder="+7(999)999-99-99">
 
-        <p></p>
+                <label for="address" class="form-label">Адрес доставки</label>
+                <input type="text" class="form-control" ng-model="contact.address" id="address" name="address">
+                <p></p>
+                <button ng-click="createOrder(contact.phone, contact.address)" class="btn btn-primary" ng-if="cartDto.items.length > 0">Оформить заказ</button>
+            </div>
+        </form>
+
+
         <h4>Мои заказы</h4>
         <span ng-if="myOrders.length == 0">Вы пока не сделали ни одного заказа</span>
         <table class="table" ng-if="myOrders.length > 0">
@@ -135,6 +145,7 @@
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Описание</th>
+                <th scope="col">Контактная информация</th>
                 <th scope="col">Цена</th>
             </tr>
             </thead>
@@ -142,11 +153,31 @@
             <tr ng-repeat="order in myOrders">
                 <td>{{order.id}}</td>
                 <td>{{order.description}}</td>
+                <td>{{order.contactInfo}}</td>
                 <td>{{order.price}}</td>
             </tr>
             </tbody>
         </table>
     </div>
+    <div>
+        <h4>Регистрация пользователя</h4>
+        <form>
+            <div class="mb-3">
+                <label for="newUser-name" class="form-label">Имя пользователя</label>
+                <input type="text" class="form-control" ng-model="newUser.username" id="newUser-name" name="username">
+
+                <label for="newUser-password" class="form-label">Пароль</label>
+                <input type="text" class="form-control" ng-model="newUser.password" id="newUser-password" name="password">
+
+                <label for="newUser-email" class="form-label">Email</label>
+                <input type="email" class="form-control" ng-model="newUser.email" id="newUser-email" name="email">
+                <p></p>
+<!--                ng-if="newUser.username.length > 0 && newUser.password.length > 0 && newUser.email.length > 0"-->
+                <button ng-click="createNewUser()" class="btn btn-primary" >Загрегестрировать</button>
+            </div>
+        </form>
+    </div>
+
 <!--    <p></p>-->
 <!--    <h4>Add new product</h4>-->
 <!--    <div>-->

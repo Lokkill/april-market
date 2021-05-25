@@ -117,14 +117,26 @@ angular.module('app', ['ngStorage']).controller('indexController', function ($sc
         });
     };
 
-    $scope.createOrder = function () {
+    $scope.createOrder = function (phone, address) {
         $http({
             url: contextPath + '/api/v1/orders',
-            method: 'POST'
-        }).then(function (response) {
+            method: 'POST',
+            params: {
+                phone: phone,
+                address: address
+            }
+        })
+        .then(function (response) {
             $scope.showMyOrders();
             $scope.loadCart();
         });
+    };
+    // username, password, email
+    $scope.createNewUser = function () {
+        $http.post(contextPath + '/api/v1/users', $scope.newUser)
+            .then(function (response) {
+                $scope.loadCart();
+            });
     };
 
     $scope.clearCart = function () {
@@ -143,4 +155,6 @@ angular.module('app', ['ngStorage']).controller('indexController', function ($sc
 
     $scope.loadPage(1);
     $scope.loadCart();
+
 });
+
