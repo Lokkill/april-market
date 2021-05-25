@@ -135,6 +135,9 @@ angular.module('app', ['ngStorage']).controller('indexController', function ($sc
     $scope.createNewUser = function () {
         $http.post(contextPath + '/api/v1/users', $scope.newUser)
             .then(function (response) {
+                $scope.newUser.username = null;
+                $scope.newUser.password = null;
+                $scope.newUser.email = null;
                 $scope.loadCart();
             });
     };
