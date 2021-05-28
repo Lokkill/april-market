@@ -32,9 +32,9 @@ public class OrderController {
     private final UserService userService;
 
     @PostMapping
-    public void createNewOrder(Principal principal) {
+    public void createNewOrder(@RequestParam(name = "phone") String phone, @RequestParam(name = "address") String address, Principal principal) {
         User user = userService.findByUsername(principal.getName()).get();
-        orderService.createOrderForCurrentUser(user);
+        orderService.createOrderForCurrentUser(user, phone, address);
     }
 
     @GetMapping

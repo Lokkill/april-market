@@ -26,7 +26,7 @@ public class OrderService {
         return orderRepository.findAllByUser(user);
     }
 
-    public Order createOrderForCurrentUser(User user) {
+    public Order createOrderForCurrentUser(User user, String phone, String address) {
         Order order = new Order();
         order.setUser(user);
         order.setPrice(cart.getSum());
@@ -35,6 +35,8 @@ public class OrderService {
         for (OrderItem oi : cart.getItems()) {
             oi.setOrder(order);
         }
+        order.setPhone(phone);
+        order.setAddress(address);
         order = orderRepository.save(order);
         cart.clear();
         return order;

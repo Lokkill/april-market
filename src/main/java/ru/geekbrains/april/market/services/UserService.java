@@ -13,6 +13,7 @@ import ru.geekbrains.april.market.models.User;
 import ru.geekbrains.april.market.repositories.UserRepository;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -35,4 +36,10 @@ public class UserService implements UserDetailsService {
     private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles) {
         return roles.stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
     }
+
+    public void addUser(User user){
+        userRepository.save(user);
+    }
+
+    public List<User> findAll(){ return userRepository.findAll();}
 }

@@ -25,6 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/v1/orders/**").authenticated()
                 .antMatchers("/api/auth_demo").authenticated() // todo remove this demo code
                 .antMatchers("/api/v1/users/me").authenticated() // todo remove this demo code
+                .antMatchers("/api/v1/users").permitAll()
                 .antMatchers("/h2-console/**").permitAll()
                 .anyRequest().permitAll()
                 .and()
