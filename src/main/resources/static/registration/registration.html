@@ -1,0 +1,17 @@
+<div class="container" ng-controller="registrationController">
+    <h4>Регистрация пользователя</h4>
+    <form>
+        <div class="mb-3">
+            <label for="newUser-name" class="form-label">Имя пользователя</label>
+            <input type="text" class="form-control" ng-model="newUser.username" id="newUser-name" name="username">
+
+            <label for="newUser-password" class="form-label">Пароль</label>
+            <input type="text" class="form-control" ng-model="newUser.password" id="newUser-password" name="password">
+
+            <label for="newUser-email" class="form-label">Email</label>
+            <input type="email" class="form-control" ng-model="newUser.email" id="newUser-email" name="email">
+            <p></p>
+            <button ng-click="createNewUser()" class="btn btn-primary">Загрегестрировать</button>
+        </div>
+    </form>
+</div>
