@@ -19,32 +19,16 @@ public class CartController {
 
     @GetMapping("/add/{productId}")
     public void addToCart(@PathVariable(name = "productId") Long id) {
-//        if (session.getAttribute("cart") == null){
-//            session.setAttribute("cart", cart);
-//        }
-//        Cart sessionCart = (Cart) session.getAttribute("cart");
-//        sessionCart.addToCart(id);
-//        session.setAttribute("cart", sessionCart);
         cartService.addToCart(cart, id);
     }
 
     @GetMapping("/clear")
     public void clearCart() {
-//        if (session.getAttribute("cart") == null){
-//            session.setAttribute("cart", cart);
-//        }
-//        Cart sessionCart = (Cart) session.getAttribute("cart");
-//        sessionCart.clear();
-//        session.setAttribute("cart", sessionCart);
         cartService.clear(cart);
     }
 
     @GetMapping
     public CartDto getCart() {
-//        if (session.getAttribute("cart") == null){
-//            session.setAttribute("cart", cart);
-//        }
-//        return new CartDto((Cart) session.getAttribute("cart"));
         return new CartDto(cart);
     }
 }
