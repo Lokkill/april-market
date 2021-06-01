@@ -2,7 +2,6 @@ package ru.geekbrains.april.market;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
 @SpringBootApplication
@@ -25,16 +24,13 @@ public class AprilMarketApplication {
     // *. *** Админка
 
     // Домашнее задание:
-    // 1. При оформлении заказа нужно указать доп информацию: телефон, адрес доставки
-    // 2. Регистрация пользователей через отправку JSON
-    // {
-    //   "username": "bob",
-    //   "password": "123"
-    //   "email": "bob@gmail.com"
-    // }
     // 3. *Исследовательская* Загрузка товаров из файла
 
     public static void main(String[] args) {
         SpringApplication.run(AprilMarketApplication.class, args);
+//        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+//        ProductService productService = context.getBean(ProductService.class);
+//
+//        context.close();
     }
 }
