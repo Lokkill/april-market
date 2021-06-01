@@ -21,6 +21,7 @@ import java.util.Optional;
 public class OrderService {
     private final OrderRepository orderRepository;
     private final Cart cart;
+    private final CartService cartService;
 
     public List<Order> findAllByUser(User user) {
         return orderRepository.findAllByUser(user);
@@ -38,7 +39,7 @@ public class OrderService {
         order.setPhone(phone);
         order.setAddress(address);
         order = orderRepository.save(order);
-        cart.clear();
+        cartService.clear(cart);
         return order;
     }
 }

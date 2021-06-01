@@ -12,12 +12,13 @@ import ru.geekbrains.april.market.models.Category;
 import ru.geekbrains.april.market.models.Product;
 import ru.geekbrains.april.market.repositories.ProductRepository;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class ProductService {
+public class ProductService implements Serializable {
     private final ProductRepository productRepository;
     private final CategoryService categoryService;
 
