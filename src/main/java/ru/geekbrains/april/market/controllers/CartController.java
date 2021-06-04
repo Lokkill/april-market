@@ -7,8 +7,6 @@ import ru.geekbrains.april.market.dtos.CartDto;
 import ru.geekbrains.april.market.services.CartService;
 import ru.geekbrains.april.market.utils.Cart;
 
-import javax.servlet.http.HttpSession;
-
 @RestController
 @RequestMapping("/api/v1/cart")
 @RequiredArgsConstructor
