@@ -8,12 +8,13 @@ import ru.geekbrains.april.market.models.OrderItem;
 import ru.geekbrains.april.market.models.Product;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
-public class OrderItemDto {
+public class OrderItemDto implements Serializable {
     private Long productId;
     private String productTitle;
     private int quantity;

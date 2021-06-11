@@ -11,19 +11,37 @@ import ru.geekbrains.april.market.error_handling.ResourceNotFoundException;
 import ru.geekbrains.april.market.models.Category;
 import ru.geekbrains.april.market.models.Product;
 import ru.geekbrains.april.market.repositories.ProductRepository;
+import ru.geekbrains.april.market.soap.productSoap.ProductSoap;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class ProductService {
+public class ProductService implements Serializable {
     private final ProductRepository productRepository;
     private final CategoryService categoryService;
 
     public Page<Product> findPage(int page, int pageSize) {
         return productRepository.findAllBy(PageRequest.of(page, pageSize));
     }
+
+
+    public static final Function<Product, ProductSoap> functionEntityToSoap = se -> {
+        ProductSoap productSoap = new ProductSoap();
+        productSoap.setId(se.getId());
+        productSoap.setTitle(se.getTitle());
+        productSoap.setPrice(se.getPrice());
+        productSoap.setCategoryTitle(se.getCategory().getTitle());
+        productSoap.setCreatedAt(se.getCreatedAt().toString());
+        productSoap.setUpdatedAt(se.getUpdatedAt().toString());
+        return productSoap;
+    };
+
+    public List<ProductSoap> getAllProducts(){return productRepository.findAll().stream().map(functionEntityToSoap).collect(Collectors.toList());}
 
     public Optional<Product> findById(Long id) {
         return productRepository.findById(id);
