@@ -23,14 +23,7 @@ public class AprilMarketApplication {
     // *. *** Интеграция с 1С
     // *. *** Админка
 
-    // Домашнее задание:
-    // 3. *Исследовательская* Загрузка товаров из файла
-
     public static void main(String[] args) {
         SpringApplication.run(AprilMarketApplication.class, args);
-//        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-//        ProductService productService = context.getBean(ProductService.class);
-//
-//        context.close();
     }
 }
